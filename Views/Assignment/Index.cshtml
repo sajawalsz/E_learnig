@@ -1,0 +1,61 @@
+﻿@model IEnumerable<fyp.Models.Assignment>
+
+@{
+    ViewBag.Title = "Assignment Index - ";
+}
+<h2></h2>
+<div class="container" style="height:300px;">
+    <p>
+        <br />
+        <b>@Html.ActionLink("Issue New Assignment", "Create")</b>
+    </p>
+
+    <div class="table-responsive">
+        <table data-toggle="table" data-url="" data-cache="false" data-height="299" class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.createdBy)
+                </th>
+                <th>
+
+                    @Html.DisplayNameFor(model => model.deadline)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.createdBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.deadline)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, null) |
+                        @Html.ActionLink("View", "ViewALL", new { id = item.Id }, null)
+
+
+
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="~/assets/js/custom.js"></script>
+
+<!-- Google Maps -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script src="~/assets/js/google-map.js"></script>

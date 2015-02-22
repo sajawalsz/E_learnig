@@ -1,0 +1,57 @@
+﻿@model IEnumerable<fyp.Models.Quiz>
+
+@{
+    ViewBag.Title = "Quiz Index - ";
+}
+<h2></h2>
+<div class="container" style="height:300px;">
+    <p>
+        <br />
+        <b>@Html.ActionLink("Create New Quiz", "Create")</b>
+    </p>
+
+    <div class="table-responsive">
+        <table data-toggle="table" data-url="" data-cache="false" data-height="299" class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.QuizName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.QuizTopic)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuizName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuizTopic)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Quiz Content", "Index", "QuizQuestions", new { id = item.Id }, null) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="~/assets/js/custom.js"></script>
+
+<!-- Google Maps -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script src="~/assets/js/google-map.js"></script>

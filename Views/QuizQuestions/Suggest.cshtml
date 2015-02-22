@@ -1,0 +1,62 @@
+﻿@model List<fyp.Models.QuizQuestion>
+@{
+    ViewBag.Title = "Suggest";
+}
+
+<h2>Suggest</h2>
+
+<table>
+    <tr>
+        <td>
+            <h3>Question</h3>
+        </td>
+        <td>
+            <h3>Answer</h3>
+        </td>
+        <td>
+            <h3>Wrong 1</h3>
+        </td>
+        <td>
+            <h3>Wrong 2</h3>
+        </td>
+        <td>
+            <h3>Wrong 3</h3>
+        </td>
+
+
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        
+            <tr>
+                <td>
+                    @x.Question
+                </td>
+                <td>
+                    @x.Answer
+                </td>
+                <td>
+                    @x.WrongAnswer1
+                </td>
+                <td>
+                    @x.WrongAnswer2
+                </td>
+                <td>
+                    @x.WrongAnswer3
+                </td>
+
+                <td>
+                    @*<form action="/QuizQuestionsController/Create/@x" method="post">
+                        <input type="submit" value=" Add to Quiz"/>
+
+
+                    </form>*@
+
+                    @Html.ActionLink("Add to Quiz", "Suggested", "QuizQuestions", new { Id = x.Id }, null)
+
+                </td>
+
+            </tr>
+    }
+</table>

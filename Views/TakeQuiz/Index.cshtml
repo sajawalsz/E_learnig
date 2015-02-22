@@ -1,0 +1,51 @@
+﻿@model IEnumerable<fyp.Models.QuizListViewModel>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+<html>
+<head>
+    <title></title>
+
+</head>
+<body>
+    <div class="container" style="height:300px;">
+            <br>
+            <form method="get">
+                <input type="search" name="searchTerm" />
+                <input type="submit" value="Search by Quiz Topic" />
+            </form>
+
+        <div class="table-responsive">
+            <br>
+            <table data-toggle="table" data-url="" data-cache="false" data-height="299" class="table">
+                <thead>Quiz Details</thead>
+                <tr>
+                    <td>Quiz Id</td>
+                    <td>Topic</td>
+                    <td>Total Questions</td>
+                    <td>Created By</td>
+                </tr>
+
+
+                @foreach (var item in Model)
+                {
+                    
+                    <tr>
+                        <td>@Html.ActionLink(item.QuizName, "Quiz", "TakeQuiz", new { id = item.Id }, null)</td>
+                        <td> @item.QuizTopic</td>
+                        <td> Number of Questions: @item.NumberOfQuestions</td>
+                        <td> Created by: @item.CreatedBy </td>
+
+
+                    </tr>
+                    
+                   
+                }
+            </table>
+</div>
+        </div>
+    </body>
+
+</html>

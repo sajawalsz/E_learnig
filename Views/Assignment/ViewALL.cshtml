@@ -1,0 +1,41 @@
+﻿@model IEnumerable<fyp.Models.SubmittedAssignment>
+@{
+    ViewBag.Title = "ViewALL";
+}
+
+
+
+<div class="container" style="height:300px;">
+
+    <div class="table-responsive">
+        <table data-toggle="table" data-url="" data-cache="false" data-height="299" class="table">
+            <tr>
+                <th>
+                    Submitted By.
+                </th>
+                <th>
+                    Download.
+                </th>
+                
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.username)
+                    </td>
+
+                    <td>
+                        <a href="@item.downloadPath" download>Download</a>
+                    </td>
+                </tr>
+            }
+
+
+
+
+
+
+        </table>
+    </div>
+</div>

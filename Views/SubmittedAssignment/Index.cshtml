@@ -1,0 +1,90 @@
+﻿@model IEnumerable<fyp.Models.Assignment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<title>Index</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+                      <script src="~/Scripts/countdown.js"></script>
+                      <script src="~/Scripts/countdown.min.js"></script>
+                      <script src="~/Scripts/jquery.countdown.js"></script>
+<h1></h1>
+<div class="container" style="height:300px;">
+
+    <div class="table-responsive">
+        <table data-toggle="table" data-url="" data-cache="false" data-height="299" class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.createdBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.deadline)
+                </th>
+                <th>Count Down</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.createdBy)
+                    </td>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.deadline)
+                    </td>
+                    <td>
+                        <div style="width:100px;height:50px;"><span id="clock"></span></div>
+                        <script type="text/javascript">
+
+                            $(document).ready(function () {
+
+                                @*@{string s = "2015/02/06";}@item.deadline.ToString()*@
+                                @{
+                                    string s = @item.deadline.ToString();
+                                    string [] d = s.Split('/');
+                                    string[] f = d[2].Split(' ');
+                                    s = null;
+                                    s +=f[0];
+                                    
+                                    s += "/0";
+                                    s += d[0];
+                                    s += "/0";
+                                    s += d[1];
+                                    string g = "2015/02/04";
+                                  }
+                                $('#clock').countdown('@s', function (event) {
+                                    $(this).html(event.strftime('%D days %H:%M:%S'));
+                                });
+                            });
+
+                        </script>
+                        @*<div class="countdown simple" data-date="june 7, 2037 15:03:25" style="height:50px;width:200px;background-color:green; "></div>*@
+
+                    </td>
+
+                    <td>
+
+                        
+                        <a href="@item.downloadPath" download>Download</a>|
+                       
+                        @Html.ActionLink("Submit", "Submit", "SubmittedAssignment", new { id = item.Id }, new { id = "sid" }) |
+                        @*@Html.ActionLink("Quiz Content", "Index", "QuizQuestions", new { id = item.Id }, null) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+
+                    </td>
+                </tr>
+            }
+        </table>
+
+
+    </div>
+
+</div>
+
